@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		03486C7018DA6F2F006D775C /* catPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03486C6F18DA6F2F006D775C /* catPlayer.m */; };
 		03486C7318DA6F42006D775C /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 03486C7218DA6F42006D775C /* Background.m */; };
+		03486CC518DACA27006D775C /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03486CC318DACA27006D775C /* Main_iPad.storyboard */; };
+		03486CC618DACA27006D775C /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03486CC418DACA27006D775C /* Main_iPhone.storyboard */; };
 		03C3298918D8112500733DB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C3298818D8112500733DB4 /* Foundation.framework */; };
 		03C3298B18D8112500733DB4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C3298A18D8112500733DB4 /* CoreGraphics.framework */; };
 		03C3298D18D8112500733DB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C3298C18D8112500733DB4 /* UIKit.framework */; };
@@ -42,6 +44,8 @@
 		03486C7118DA6F42006D775C /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Background.h; path = ../Background.h; sourceTree = "<group>"; };
 		03486C7218DA6F42006D775C /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Background.m; path = ../Background.m; sourceTree = "<group>"; };
 		03486C7518DA78FB006D775C /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		03486CC318DACA27006D775C /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
+		03486CC418DACA27006D775C /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		03C3298518D8112500733DB4 /* KittyJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KittyJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03C3298818D8112500733DB4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		03C3298A18D8112500733DB4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -129,6 +133,8 @@
 				03486C7218DA6F42006D775C /* Background.m */,
 				03C3299918D8112500733DB4 /* AppDelegate.h */,
 				03C3299A18D8112500733DB4 /* AppDelegate.m */,
+				03486CC318DACA27006D775C /* Main_iPad.storyboard */,
+				03486CC418DACA27006D775C /* Main_iPhone.storyboard */,
 				03C329A218D8112500733DB4 /* ViewController.h */,
 				03C329A318D8112500733DB4 /* ViewController.m */,
 				03C329A518D8112500733DB4 /* MyScene.h */,
@@ -246,6 +252,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03486CC618DACA27006D775C /* Main_iPhone.storyboard in Resources */,
+				03486CC518DACA27006D775C /* Main_iPad.storyboard in Resources */,
 				03C329AB18D8112500733DB4 /* Images.xcassets in Resources */,
 				03C3299518D8112500733DB4 /* InfoPlist.strings in Resources */,
 			);
@@ -395,6 +403,7 @@
 				INFOPLIST_FILE = "KittyJump/KittyJump-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -409,6 +418,7 @@
 				INFOPLIST_FILE = "KittyJump/KittyJump-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

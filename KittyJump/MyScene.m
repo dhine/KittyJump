@@ -10,6 +10,7 @@
 #import "catPlayer.h"
 @implementation MyScene
 
+//initialize nodes in scene
 -(instancetype)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]){
         self.currentBackground = [Background generateNewBackground];
@@ -18,42 +19,83 @@
         catPlayer *player = [[catPlayer alloc] init];
         player.position = CGPointMake(120, 65);
         [self addChild:player];
+        
+        self.physicsWorld.gravity = CGVectorMake(0, globalGravity);
     }
     return self;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    //Regular Jump Actions
+//    SKAction *jumpUp = [SKAction moveBy:CGVectorMake(0, 100) duration:0.5];
+//    SKAction *fallDown = [SKAction moveBy:CGVectorMake(0, -100) duration:0.3];
+//    
+//    SKAction *jumpSequence = [SKAction sequence:@[jumpUp,fallDown]];
+//    //Super Jump Actions
+//    SKAction *superJumpUp = [SKAction moveBy:CGVectorMake(0, 50) duration:0.5];
+//    SKAction *superFallDown = [SKAction moveBy:CGVectorMake(0, -150) duration:0.6];
+//    SKAction *spin = [SKAction rotateByAngle:M_PI *2 duration:.3];
+//    
+//    //SKAction *superJumpSequence = [SKAction sequence:@[superJumpUp,[SKAction group:@[spin,superFallDown]]]];
+//    
+//    //Apply Action to Player
+//    catPlayer *player = (catPlayer *) [self childNodeWithName:mainPlayer];
+//    
+//    [player runAction:jumpSequence];
+//    
+//}
+-(void)tappedScreen
+//(UITapGestureRecognizer *)recognizer
 {
-    SKAction *jumpUp = [SKAction moveBy:CGVectorMake(0, 100) duration:0.5];
-    SKAction *fallDown = [SKAction moveBy:CGVectorMake(0, -100) duration:0.3];
-    
-    SKAction *superJumpUp = [SKAction moveBy:CGVectorMake(0, 50) duration:0.5];
-    SKAction *superFallDown = [SKAction moveBy:CGVectorMake(0, -150) duration:0.6];
-    
-    SKAction *jumpSequence = [SKAction sequence:@[jumpUp,fallDown]];
     catPlayer *player = (catPlayer *) [self childNodeWithName:mainPlayer];
-    
-    [player runAction:jumpSequence];
+    [player doJump:player.playerState];
     
 }
+
+-(void) didMoveToView:(SKView *)view
+{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedScreen)];
+    [view addGestureRecognizer:tap];
+}
+
+//Called each Clock Cycle
 -(void)update:(NSTimeInterval)currentTime {
+    
+    //Find out time since last update and assign current frame (Runs at 60 FPS)
     CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;
     self.lastUpdateTimeInterval = currentTime;
+    //60 FPS
     if (timeSinceLast > 1) {
         timeSinceLast = 1.0 / 60.0;
     }
     
+    //Infinite Background
+    
+        //Move background's "X" position by "backgroundmovespeed" each frame
     [self enumerateChildNodesWithName:backgroundName usingBlock:^(SKNode *node, BOOL *stop) {
         node.position = CGPointMake(node.position.x - backgroundMoveSpeed * timeSinceLast, node.position.y);
+        //If Background is off screen, remove from scene
     if (node.position.x < -(node.frame.size.width + 100)) {
         [node removeFromParent];
     }}];
-    if (self.currentBackground.position.x < -500) {
+        //When background goes on screen by entire width of background...generate new backgroung (previous block removes old background)
+    if (self.currentBackground.position.x < -400) {
+        //Generate new background off screen
         Background *temp = [Background generateNewBackground];
-        temp.position = CGPointMake(self.currentBackground.position.x + self.currentBackground.frame.size.width, 0);
+        //when on screen...add to screen
+        temp.position = CGPointMake(self.currentBackground.position.x + self.currentBackground.frame.size.width - 5, 0);
         [self addChild:temp];
         self.currentBackground = temp;
     }
+    
+    [self enumerateChildNodesWithName:mainPlayer usingBlock:^(SKNode *node, BOOL *stop) {
+        catPlayer *player = (catPlayer *)node;
+        if (player.playerState == playerStateJumping){
+            [player.physicsBody applyForce:CGVectorMake(0, catJumpForce)];
+            player.playerState = playerStateRunning;
+        }
+    }];
 }
 
 @end
