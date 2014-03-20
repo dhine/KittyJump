@@ -15,7 +15,11 @@
 {
     [super viewDidLoad];
 
-    // Configure the view.
+  
+}
+-(void)viewWillLayoutSubviews
+{
+      // Configure the view.
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
@@ -27,7 +31,6 @@
     // Present the scene.
     [skView presentScene:scene];
 }
-
 - (BOOL)shouldAutorotate
 {
     return YES;

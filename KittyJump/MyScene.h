@@ -7,7 +7,12 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "Background.h"
 
+@class Background;
 @interface MyScene : SKScene
+
+@property (strong,nonatomic) Background *currentBackground;
+@property (assign) CFTimeInterval lastUpdateTimeInterval;
 
 @end

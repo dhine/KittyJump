@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03486C7018DA6F2F006D775C /* catPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 03486C6F18DA6F2F006D775C /* catPlayer.m */; };
+		03486C7318DA6F42006D775C /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 03486C7218DA6F42006D775C /* Background.m */; };
 		03C3298918D8112500733DB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C3298818D8112500733DB4 /* Foundation.framework */; };
 		03C3298B18D8112500733DB4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C3298A18D8112500733DB4 /* CoreGraphics.framework */; };
 		03C3298D18D8112500733DB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C3298C18D8112500733DB4 /* UIKit.framework */; };
@@ -14,11 +16,8 @@
 		03C3299518D8112500733DB4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03C3299318D8112500733DB4 /* InfoPlist.strings */; };
 		03C3299718D8112500733DB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C3299618D8112500733DB4 /* main.m */; };
 		03C3299B18D8112500733DB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C3299A18D8112500733DB4 /* AppDelegate.m */; };
-		03C3299E18D8112500733DB4 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C3299C18D8112500733DB4 /* Main_iPhone.storyboard */; };
-		03C329A118D8112500733DB4 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C3299F18D8112500733DB4 /* Main_iPad.storyboard */; };
 		03C329A418D8112500733DB4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C329A318D8112500733DB4 /* ViewController.m */; };
 		03C329A718D8112500733DB4 /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C329A618D8112500733DB4 /* MyScene.m */; };
-		03C329A918D8112500733DB4 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 03C329A818D8112500733DB4 /* Spaceship.png */; };
 		03C329AB18D8112500733DB4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03C329AA18D8112500733DB4 /* Images.xcassets */; };
 		03C329B218D8112500733DB4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C329B118D8112500733DB4 /* XCTest.framework */; };
 		03C329B318D8112500733DB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C3298818D8112500733DB4 /* Foundation.framework */; };
@@ -38,6 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03486C6E18DA6F2F006D775C /* catPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = catPlayer.h; sourceTree = "<group>"; };
+		03486C6F18DA6F2F006D775C /* catPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = catPlayer.m; sourceTree = "<group>"; };
+		03486C7118DA6F42006D775C /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Background.h; path = ../Background.h; sourceTree = "<group>"; };
+		03486C7218DA6F42006D775C /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Background.m; path = ../Background.m; sourceTree = "<group>"; };
+		03486C7518DA78FB006D775C /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		03C3298518D8112500733DB4 /* KittyJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KittyJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03C3298818D8112500733DB4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		03C3298A18D8112500733DB4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -49,13 +53,10 @@
 		03C3299818D8112500733DB4 /* KittyJump-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KittyJump-Prefix.pch"; sourceTree = "<group>"; };
 		03C3299918D8112500733DB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		03C3299A18D8112500733DB4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		03C3299D18D8112500733DB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		03C329A018D8112500733DB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		03C329A218D8112500733DB4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		03C329A318D8112500733DB4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		03C329A518D8112500733DB4 /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
 		03C329A618D8112500733DB4 /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
-		03C329A818D8112500733DB4 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		03C329AA18D8112500733DB4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		03C329B018D8112500733DB4 /* KittyJumpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KittyJumpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03C329B118D8112500733DB4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -123,15 +124,17 @@
 		03C3299018D8112500733DB4 /* KittyJump */ = {
 			isa = PBXGroup;
 			children = (
+				03486C7518DA78FB006D775C /* Common.h */,
+				03486C7118DA6F42006D775C /* Background.h */,
+				03486C7218DA6F42006D775C /* Background.m */,
 				03C3299918D8112500733DB4 /* AppDelegate.h */,
 				03C3299A18D8112500733DB4 /* AppDelegate.m */,
-				03C3299C18D8112500733DB4 /* Main_iPhone.storyboard */,
-				03C3299F18D8112500733DB4 /* Main_iPad.storyboard */,
 				03C329A218D8112500733DB4 /* ViewController.h */,
 				03C329A318D8112500733DB4 /* ViewController.m */,
 				03C329A518D8112500733DB4 /* MyScene.h */,
 				03C329A618D8112500733DB4 /* MyScene.m */,
-				03C329A818D8112500733DB4 /* Spaceship.png */,
+				03486C6E18DA6F2F006D775C /* catPlayer.h */,
+				03486C6F18DA6F2F006D775C /* catPlayer.m */,
 				03C329AA18D8112500733DB4 /* Images.xcassets */,
 				03C3299118D8112500733DB4 /* Supporting Files */,
 			);
@@ -243,10 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03C329A918D8112500733DB4 /* Spaceship.png in Resources */,
 				03C329AB18D8112500733DB4 /* Images.xcassets in Resources */,
-				03C329A118D8112500733DB4 /* Main_iPad.storyboard in Resources */,
-				03C3299E18D8112500733DB4 /* Main_iPhone.storyboard in Resources */,
 				03C3299518D8112500733DB4 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,8 +267,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				03C329A718D8112500733DB4 /* MyScene.m in Sources */,
+				03486C7318DA6F42006D775C /* Background.m in Sources */,
 				03C329A418D8112500733DB4 /* ViewController.m in Sources */,
 				03C3299B18D8112500733DB4 /* AppDelegate.m in Sources */,
+				03486C7018DA6F2F006D775C /* catPlayer.m in Sources */,
 				03C3299718D8112500733DB4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,22 +300,6 @@
 				03C3299418D8112500733DB4 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		03C3299C18D8112500733DB4 /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				03C3299D18D8112500733DB4 /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		03C3299F18D8112500733DB4 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				03C329A018D8112500733DB4 /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		03C329BA18D8112500733DB4 /* InfoPlist.strings */ = {
@@ -486,6 +472,7 @@
 				03C329C318D8112500733DB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		03C329C418D8112500733DB4 /* Build configuration list for PBXNativeTarget "KittyJumpTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +481,7 @@
 				03C329C618D8112500733DB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
