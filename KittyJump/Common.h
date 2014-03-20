@@ -11,5 +11,6 @@
 
 static NSInteger backgroundMoveSpeed = 30;
 static NSString * backgroundName = @"background";
+static NSString * mainPlayer = @"cat";
 
 #endif

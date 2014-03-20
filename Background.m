@@ -16,6 +16,7 @@
     background.anchorPoint = CGPointMake(0, 0);
     background.position = CGPointMake(0, 0);
     background.name = backgroundName;
+    background.zPosition = 1;
     
     
     return background;

@@ -10,4 +10,12 @@
 
 @implementation catPlayer
 
+-(instancetype)init
+{
+    self = [super initWithImageNamed:@"mainCharacter.png"];
+    self.name = mainPlayer;
+    self.zPosition = 10;
+    return self;
+}
+
 @end
