@@ -31,12 +31,12 @@
     background.physicsBody.contactTestBitMask = playerCategory;
     
     //attach new node for ceiling collision body
-//    SKNode * ceilingCollide = [SKNode node];
-//    ceilingCollide.position = CGPointMake(0, 0);
-//    ceilingCollide.physicsBody = [SKPhysicsBody bodyWithEdgeFromPoint:CGPointMake(0, background.size.height - 30) toPoint:CGPointMake(background.size.width,background.size.height -10)];
-//    
-//    ceilingCollide.physicsBody.categoryBitMask = backgroundCategory;
-//    [background addChild:ceilingCollide];
+    SKNode * ceilingCollide = [SKNode node];
+    ceilingCollide.position = CGPointMake(0, 0);
+    ceilingCollide.physicsBody = [SKPhysicsBody bodyWithEdgeFromPoint:CGPointMake(0, background.size.height - 30) toPoint:CGPointMake(background.size.width,background.size.height -10)];
+    
+    ceilingCollide.physicsBody.categoryBitMask = backgroundCategory;
+    [background addChild:ceilingCollide];
     
     return background;
 }

@@ -19,9 +19,8 @@ static NSInteger globalGravity = -4.8;
 //main player
 static NSString * mainPlayer = @"cat";
 static NSInteger mainPlayerMass = 80;
-static NSInteger catJumpForce = 32000;
-static NSInteger catSuperJumpForce = 35000;
-static float mainPlayerRestitution = 0;
+static NSInteger catJumpForce = 22000;
+static NSInteger catSuperJumpForce = 25000;
 
 //bitmasks
 static const uint32_t backgroundCategory = 1;

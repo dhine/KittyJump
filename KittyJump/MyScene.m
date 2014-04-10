@@ -69,19 +69,11 @@
         [self addChild:temp];
         self.currentBackground = temp;
     }
-    
-    [self enumerateChildNodesWithName:mainPlayer usingBlock:^(SKNode *node, BOOL *stop) {
-        //catPlayer *player = (catPlayer *)node;
-//        if (self.player.playerState == playerStateJumping){
-//            
-//        }
-        
-    }];
     NSLog(@"%d",self.player.playerState);
     
 }
 -(void)didBeginContact:(SKPhysicsContact *)contact {
-    if (contact.bodyB.categoryBitMask == backgroundCategory) {
+    if (contact.bodyB.categoryBitMask == playerCategory) {
         NSLog(@"background hit");
         self.player.playerState = playerStateRunning;
     }
