@@ -94,6 +94,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03BA893C18F67553002CCA41 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 		03C3297C18D8112500733DB4 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +135,7 @@
 		03C3299018D8112500733DB4 /* KittyJump */ = {
 			isa = PBXGroup;
 			children = (
+				03BA893C18F67553002CCA41 /* iPad */,
 				03486C7518DA78FB006D775C /* Common.h */,
 				03486C7118DA6F42006D775C /* Background.h */,
 				03486C7218DA6F42006D775C /* Background.m */,
@@ -401,9 +409,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KittyJump/KittyJump-Prefix.pch";
 				INFOPLIST_FILE = "KittyJump/KittyJump-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -416,9 +425,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KittyJump/KittyJump-Prefix.pch";
 				INFOPLIST_FILE = "KittyJump/KittyJump-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

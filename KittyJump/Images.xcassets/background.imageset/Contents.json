@@ -16,6 +16,15 @@
       "idiom" : "iphone",
       "scale" : "2x",
       "filename" : "background.png"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "2x",
+      "filename" : "background-1.png"
     }
   ],
   "info" : {

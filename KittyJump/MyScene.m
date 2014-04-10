@@ -15,8 +15,8 @@
         self.currentBackground = [Background generateNewBackground];
         [self addChild:self.currentBackground];
         self.physicsWorld.contactDelegate = self;
-        self.player = [[catPlayer alloc] init];
         
+        self.player = [[catPlayer alloc] init];
         self.player.position = CGPointMake(120, 65);
         [self addChild:self.player];
         
@@ -26,11 +26,8 @@
 }
 
 -(void)tappedScreen
-//(UITapGestureRecognizer *)recognizer
 {
-    //catPlayer *player = (catPlayer *) [self childNodeWithName:mainPlayer];
     [self.player doJump:self.player.playerState];
-    
 }
 
 -(void) didMoveToView:(SKView *)view
@@ -73,10 +70,19 @@
     
 }
 -(void)didBeginContact:(SKPhysicsContact *)contact {
-    if (contact.bodyB.categoryBitMask == playerCategory) {
-        NSLog(@"background hit");
+    
+    SKPhysicsBody * notThePlayer;
+    
+    //find out which body is not the player
+    if (contact.bodyB.categoryBitMask != playerCategory) {
+        notThePlayer = contact.bodyB;
+    } else {
+        notThePlayer = contact.bodyA;
+    }
+    //If player hits background element...set state to Running
+    if (notThePlayer.categoryBitMask == backgroundCategory)
+    {
         self.player.playerState = playerStateRunning;
     }
-
 }
 @end
