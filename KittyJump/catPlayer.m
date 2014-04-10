@@ -18,9 +18,11 @@
         //apply physics body
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.size.width, self.size.height)];
         self.physicsBody.dynamic=YES;
-    
+        self.physicsBody.restitution = mainPlayerRestitution;
+        
+        self.physicsBody.categoryBitMask = playerCategory;
         self.physicsBody.mass = mainPlayerMass;
-        self.physicsBody.collisionBitMask = mainPlayerCollisionBitMask;
+        
         self.physicsBody.allowsRotation = NO;
     }
     return self;
@@ -28,9 +30,16 @@
 
 -(void)doJump:(catState)playerState
 {
-    if (playerState == playerStateRunning){
+    if (self.playerState == playerStateRunning){
+        [self.physicsBody applyImpulse:CGVectorMake(0, catJumpForce)];
         self.playerState = playerStateJumping;
     }
+    else if (self.playerState == playerStateJumping){
+        [self.physicsBody applyImpulse:CGVectorMake(0, catSuperJumpForce)];
+        SKAction *spinMove = [SKAction rotateByAngle:-(M_PI * 2) duration:0.3];
+        [self runAction:spinMove];
+        
+        self.playerState = playerStateFalling;
+    }
 }
-
 @end

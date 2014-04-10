@@ -7,7 +7,6 @@
 //
 
 #import "MyScene.h"
-#import "catPlayer.h"
 @implementation MyScene
 
 //initialize nodes in scene
@@ -15,47 +14,30 @@
     if (self = [super initWithSize:size]){
         self.currentBackground = [Background generateNewBackground];
         [self addChild:self.currentBackground];
+        self.physicsWorld.contactDelegate = self;
+        self.player = [[catPlayer alloc] init];
         
-        catPlayer *player = [[catPlayer alloc] init];
-        player.position = CGPointMake(120, 65);
-        [self addChild:player];
+        self.player.position = CGPointMake(120, 65);
+        [self addChild:self.player];
         
         self.physicsWorld.gravity = CGVectorMake(0, globalGravity);
     }
     return self;
 }
 
-//-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    //Regular Jump Actions
-//    SKAction *jumpUp = [SKAction moveBy:CGVectorMake(0, 100) duration:0.5];
-//    SKAction *fallDown = [SKAction moveBy:CGVectorMake(0, -100) duration:0.3];
-//    
-//    SKAction *jumpSequence = [SKAction sequence:@[jumpUp,fallDown]];
-//    //Super Jump Actions
-//    SKAction *superJumpUp = [SKAction moveBy:CGVectorMake(0, 50) duration:0.5];
-//    SKAction *superFallDown = [SKAction moveBy:CGVectorMake(0, -150) duration:0.6];
-//    SKAction *spin = [SKAction rotateByAngle:M_PI *2 duration:.3];
-//    
-//    //SKAction *superJumpSequence = [SKAction sequence:@[superJumpUp,[SKAction group:@[spin,superFallDown]]]];
-//    
-//    //Apply Action to Player
-//    catPlayer *player = (catPlayer *) [self childNodeWithName:mainPlayer];
-//    
-//    [player runAction:jumpSequence];
-//    
-//}
 -(void)tappedScreen
 //(UITapGestureRecognizer *)recognizer
 {
-    catPlayer *player = (catPlayer *) [self childNodeWithName:mainPlayer];
-    [player doJump:player.playerState];
+    //catPlayer *player = (catPlayer *) [self childNodeWithName:mainPlayer];
+    [self.player doJump:self.player.playerState];
     
 }
 
 -(void) didMoveToView:(SKView *)view
 {
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedScreen)];
+    tap.numberOfTapsRequired = 1;
+    
     [view addGestureRecognizer:tap];
 }
 
@@ -69,7 +51,6 @@
     if (timeSinceLast > 1) {
         timeSinceLast = 1.0 / 60.0;
     }
-    
     //Infinite Background
     
         //Move background's "X" position by "backgroundmovespeed" each frame
@@ -90,12 +71,20 @@
     }
     
     [self enumerateChildNodesWithName:mainPlayer usingBlock:^(SKNode *node, BOOL *stop) {
-        catPlayer *player = (catPlayer *)node;
-        if (player.playerState == playerStateJumping){
-            [player.physicsBody applyForce:CGVectorMake(0, catJumpForce)];
-            player.playerState = playerStateRunning;
-        }
+        //catPlayer *player = (catPlayer *)node;
+//        if (self.player.playerState == playerStateJumping){
+//            
+//        }
+        
     }];
+    NSLog(@"%d",self.player.playerState);
+    
 }
+-(void)didBeginContact:(SKPhysicsContact *)contact {
+    if (contact.bodyB.categoryBitMask == backgroundCategory) {
+        NSLog(@"background hit");
+        self.player.playerState = playerStateRunning;
+    }
 
+}
 @end

@@ -8,11 +8,14 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "Background.h"
+#import "catPlayer.h"
+
 
 @class Background;
-@interface MyScene : SKScene
+@interface MyScene : SKScene <SKPhysicsContactDelegate>
 
 @property (strong,nonatomic) Background *currentBackground;
+@property (strong,nonatomic) catPlayer *player;
 @property (assign) CFTimeInterval lastUpdateTimeInterval;
 
 @end

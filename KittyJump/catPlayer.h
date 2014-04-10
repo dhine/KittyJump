@@ -10,8 +10,7 @@
 typedef enum catState {
     playerStateRunning = 0,
     playerStateJumping,
-    playerStateSuperJumping,
-    playerStateLongJumping
+    playerStateFalling
 }catState;
 
 
@@ -20,5 +19,4 @@ typedef enum catState {
 @property (assign,nonatomic)catState playerState;
 
 -(void)doJump:(catState)playerState;
-
 @end
