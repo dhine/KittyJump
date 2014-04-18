@@ -19,6 +19,6 @@
 @property (strong,nonatomic)catPlayer *player;
 @property (assign) CFTimeInterval lastUpdateTimeInterval;
 
-@property  UIGestureRecognizer * tap;
+@property  (strong) UIGestureRecognizer * tap;
 
 @end

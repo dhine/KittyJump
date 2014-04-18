@@ -19,8 +19,8 @@
         gameOverTitle.position = CGPointMake(self.size.width/2, self.size.height/2);
         
         SKLabelNode *tryAgainButton = [[SKLabelNode alloc] init];
-        tryAgainButton.text = @"Tap Here to Try Agian";
-        tryAgainButton.position = CGPointMake(self.size.width/2, self.size.height * 0.75);
+        tryAgainButton.text = @"Tap to Try Agian";
+        tryAgainButton.position = CGPointMake(self.size.width/2, self.size.height/2 + 40);
         
         [self addChild:gameOverTitle];
         [self addChild:tryAgainButton];
@@ -28,9 +28,15 @@
     return self;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)newGame {
     MyScene *newGame = [[MyScene alloc] initWithSize:self.size];
     [self.view presentScene:newGame transition:[SKTransition doorsOpenHorizontalWithDuration:1.5]];
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    
+    [self newGame];
     
 }
 

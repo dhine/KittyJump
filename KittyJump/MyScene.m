@@ -41,12 +41,39 @@
     
 }
 
--(void) didMoveToView:(SKView *)view
+-(void)didMoveToView:(SKView *)view
 {
-    if (self.player != nil){
-    UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedScreen)];
-    [view addGestureRecognizer:tap];
+    self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedScreen)];
+    [view addGestureRecognizer:self.tap];
+}
+
+- (void)runBackground:(CFTimeInterval)timeSinceLast {
+    //Move background's "X" position by "backgroundmovespeed" each frame
+    [self enumerateChildNodesWithName:backgroundName usingBlock:^(SKNode *node, BOOL *stop) {
+        node.position = CGPointMake(node.position.x - backgroundMoveSpeed * timeSinceLast, node.position.y);
+        //If Background is off screen, remove from scene
+        if (node.position.x < -(node.frame.size.width + 100)) {
+            [self createEnemy];
+            [node removeFromParent];
+        }}];
+    //When background goes on screen by entire width of background...generate new backgroung (previous block removes old background)
+    if (self.currentBackground.position.x < -400) {
+        //Generate new background off screen
+        Background *temp = [Background generateNewBackground];
+        //when on screen...add to screen
+        temp.position = CGPointMake(self.currentBackground.position.x + self.currentBackground.frame.size.width - 5, 0);
+        [self addChild:temp];
+        self.currentBackground = temp;
     }
+}
+
+- (void)runEnemy:(CFTimeInterval)timeSinceLast {
+    [self enumerateChildNodesWithName:redCarEnemy usingBlock:^(SKNode *node, BOOL *stop) {
+        node.position = CGPointMake(node.position.x - backgroundMoveSpeed * timeSinceLast, node.position.y);
+        if (node.position.x < -20) {
+            [node removeFromParent];
+        }
+    }];
 }
 
 //Called each Clock Cycle
@@ -61,30 +88,9 @@
     }
     //Infinite Background
     
-        //Move background's "X" position by "backgroundmovespeed" each frame
-    [self enumerateChildNodesWithName:backgroundName usingBlock:^(SKNode *node, BOOL *stop) {
-        node.position = CGPointMake(node.position.x - backgroundMoveSpeed * timeSinceLast, node.position.y);
-        //If Background is off screen, remove from scene
-    if (node.position.x < -(node.frame.size.width + 100)) {
-        [self createEnemy];
-        [node removeFromParent];
-    }}];
-        //When background goes on screen by entire width of background...generate new backgroung (previous block removes old background)
-    if (self.currentBackground.position.x < -400) {
-        //Generate new background off screen
-        Background *temp = [Background generateNewBackground];
-        //when on screen...add to screen
-        temp.position = CGPointMake(self.currentBackground.position.x + self.currentBackground.frame.size.width - 5, 0);
-        [self addChild:temp];
-        self.currentBackground = temp;
-    }
+    [self runBackground:timeSinceLast];
     
-    [self enumerateChildNodesWithName:redCarEnemy usingBlock:^(SKNode *node, BOOL *stop) {
-        node.position = CGPointMake(node.position.x - backgroundMoveSpeed * timeSinceLast, node.position.y);
-        if (node.position.x < -20) {
-            [node removeFromParent];
-        }
-    }];
+    [self runEnemy:timeSinceLast];
     
 }
 -(void)didBeginContact:(SKPhysicsContact *)contact {
@@ -105,8 +111,10 @@
     
     if (notThePlayer.categoryBitMask == enemyCategory)
     {
+        [self.view removeGestureRecognizer:self.tap];
         GameOverScene * gameOver = [GameOverScene sceneWithSize:self.size];
         [self.view presentScene:gameOver transition:[SKTransition doorsCloseHorizontalWithDuration:1.0]];
+        
     }
 }
 @end
