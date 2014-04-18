@@ -30,6 +30,14 @@
     [self.player doJump:self.player.playerState];
 }
 
+-(void)createEnemy
+{
+    carEnemy *theBadGuy = [[carEnemy alloc] init];
+    theBadGuy.position = CGPointMake(520,65);
+    [self addChild:theBadGuy];
+    
+}
+
 -(void) didMoveToView:(SKView *)view
 {
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedScreen)];
@@ -55,6 +63,7 @@
         node.position = CGPointMake(node.position.x - backgroundMoveSpeed * timeSinceLast, node.position.y);
         //If Background is off screen, remove from scene
     if (node.position.x < -(node.frame.size.width + 100)) {
+        [self createEnemy];
         [node removeFromParent];
     }}];
         //When background goes on screen by entire width of background...generate new backgroung (previous block removes old background)
@@ -66,7 +75,13 @@
         [self addChild:temp];
         self.currentBackground = temp;
     }
-    NSLog(@"%d",self.player.playerState);
+    
+    [self enumerateChildNodesWithName:redCarEnemy usingBlock:^(SKNode *node, BOOL *stop) {
+        node.position = CGPointMake(node.position.x - backgroundMoveSpeed * timeSinceLast, node.position.y);
+        if (node.position.x < -20) {
+            [node removeFromParent];
+        }
+    }];
     
 }
 -(void)didBeginContact:(SKPhysicsContact *)contact {
@@ -83,6 +98,12 @@
     if (notThePlayer.categoryBitMask == backgroundCategory)
     {
         self.player.playerState = playerStateRunning;
+    }
+    
+    if (notThePlayer.categoryBitMask == enemyCategory)
+    {
+        GameOverScene * gameOver = [GameOverScene sceneWithSize:self.size];
+        [self.view presentScene:gameOver transition:[SKTransition doorsCloseHorizontalWithDuration:1.0]];
     }
 }
 @end

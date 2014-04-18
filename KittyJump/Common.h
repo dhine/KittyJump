@@ -16,6 +16,9 @@ static NSInteger globalGravity = -4.8;
 
 
 
+//enemy properties
+static NSString *redCarEnemy = @"enemyRedCar";
+
 //player properties
 static NSString * mainPlayer = @"cat";
 static NSInteger mainPlayerMass = 80;

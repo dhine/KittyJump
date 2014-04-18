@@ -9,7 +9,8 @@
 #import <SpriteKit/SpriteKit.h>
 #import "Background.h"
 #import "catPlayer.h"
-
+#import "carEnemy.h"
+#import "GameOverScene.h"
 
 @class Background;
 @interface MyScene : SKScene <SKPhysicsContactDelegate>
