@@ -15,8 +15,10 @@
 @class Background;
 @interface MyScene : SKScene <SKPhysicsContactDelegate>
 
-@property (strong,nonatomic) Background *currentBackground;
-@property (strong,nonatomic) catPlayer *player;
+@property (strong,nonatomic)Background *currentBackground;
+@property (strong,nonatomic)catPlayer *player;
 @property (assign) CFTimeInterval lastUpdateTimeInterval;
+
+@property  UIGestureRecognizer * tap;
 
 @end

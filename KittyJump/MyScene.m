@@ -21,12 +21,15 @@
         [self addChild:self.player];
         
         self.physicsWorld.gravity = CGVectorMake(0, globalGravity);
+        
+       
     }
     return self;
 }
 
 -(void)tappedScreen
 {
+    
     [self.player doJump:self.player.playerState];
 }
 
@@ -40,10 +43,10 @@
 
 -(void) didMoveToView:(SKView *)view
 {
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedScreen)];
-    tap.numberOfTapsRequired = 1;
-    
+    if (self.player != nil){
+    UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedScreen)];
     [view addGestureRecognizer:tap];
+    }
 }
 
 //Called each Clock Cycle

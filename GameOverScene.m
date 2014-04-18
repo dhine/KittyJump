@@ -13,17 +13,17 @@
 -(instancetype) initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]){
         self.backgroundColor = [UIColor blackColor];
-        SKLabelNode *gameOverTitle = [[SKLabelNode alloc] initWithFontNamed:@"Arial"];
+        SKLabelNode *gameOverTitle = [[SKLabelNode alloc] init];
         gameOverTitle.text = @"Game Over";
         gameOverTitle.color = [UIColor whiteColor];
         gameOverTitle.position = CGPointMake(self.size.width/2, self.size.height/2);
         
-        self.tryAgainButton = [[SKLabelNode alloc] initWithFontNamed:@"Arial"];
-        self.tryAgainButton.text = @"Tap Here to Try Agian";
-        self.tryAgainButton.position = CGPointMake(self.size.width/2, self.size.height * 0.75);
+        SKLabelNode *tryAgainButton = [[SKLabelNode alloc] init];
+        tryAgainButton.text = @"Tap Here to Try Agian";
+        tryAgainButton.position = CGPointMake(self.size.width/2, self.size.height * 0.75);
         
         [self addChild:gameOverTitle];
-        [self addChild:self.tryAgainButton];
+        [self addChild:tryAgainButton];
     }
     return self;
 }

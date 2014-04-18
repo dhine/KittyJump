@@ -10,6 +10,4 @@
 
 @interface GameOverScene : SKScene
 
-@property SKLabelNode * tryAgainButton;
-
 @end
