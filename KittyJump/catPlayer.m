@@ -16,7 +16,7 @@
     {   self.name = mainPlayer;
         self.zPosition = 10;
         //apply physics body
-        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.size.width, self.size.height)];
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.height/2];
         self.physicsBody.dynamic=YES;
         self.physicsBody.restitution = 0;
         self.physicsBody.linearDamping = 0;
@@ -24,6 +24,7 @@
         
         
         self.physicsBody.categoryBitMask = playerCategory;
+        self.physicsBody.contactTestBitMask = enemyCategory;
         self.physicsBody.mass = mainPlayerMass;
         
         self.physicsBody.allowsRotation = NO;
@@ -46,6 +47,12 @@
 
         
         self.playerState = playerStateFalling;
+    }
+}
+
+-(void)doDown:(catState)playerState{
+    if (self.playerState == playerStateJumping || self.playerState == playerStateFalling) {
+        [self.physicsBody applyImpulse:CGVectorMake(0, -catJumpForce * 2)];
     }
 }
 @end

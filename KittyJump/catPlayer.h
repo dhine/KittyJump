@@ -19,5 +19,6 @@ typedef enum catState {
 @property (assign,nonatomic)catState playerState;
 
 -(void)doJump:(catState)playerState;
+-(void)doDown:(catState)playerState;
 
 @end

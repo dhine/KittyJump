@@ -32,11 +32,15 @@
     
     [self.player doJump:self.player.playerState];
 }
+-(void)swippedDown{
+    [self.player doDown:self.player.playerState];
+    NSLog(@"Ran");
+}
 
 -(void)createEnemy
 {
     carEnemy *theBadGuy = [[carEnemy alloc] init];
-    theBadGuy.position = CGPointMake(520,65);
+    theBadGuy.position = CGPointMake(600,65);
     [self addChild:theBadGuy];
     
 }
@@ -45,6 +49,9 @@
 {
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedScreen)];
     [view addGestureRecognizer:self.tap];
+    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swippedDown)];
+    swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
+    [view addGestureRecognizer:swipeDown];
 }
 
 - (void)runBackground:(CFTimeInterval)timeSinceLast {
@@ -52,8 +59,11 @@
     [self enumerateChildNodesWithName:backgroundName usingBlock:^(SKNode *node, BOOL *stop) {
         node.position = CGPointMake(node.position.x - backgroundMoveSpeed * timeSinceLast, node.position.y);
         //If Background is off screen, remove from scene
+        
+        
+    
         if (node.position.x < -(node.frame.size.width + 100)) {
-            [self createEnemy];
+            //[self createEnemy];
             [node removeFromParent];
         }}];
     //When background goes on screen by entire width of background...generate new backgroung (previous block removes old background)
@@ -69,8 +79,8 @@
 
 - (void)runEnemy:(CFTimeInterval)timeSinceLast {
     [self enumerateChildNodesWithName:redCarEnemy usingBlock:^(SKNode *node, BOOL *stop) {
-        node.position = CGPointMake(node.position.x - backgroundMoveSpeed * timeSinceLast, node.position.y);
-        if (node.position.x < -20) {
+        node.position = CGPointMake(node.position.x - 10, node.position.y);
+        if (node.position.x < -40) {
             [node removeFromParent];
         }
     }];
@@ -86,7 +96,12 @@
     if (timeSinceLast > 1) {
         timeSinceLast = 1.0 / 60.0;
     }
-    //Infinite Background
+    
+    int nextEnemy = arc4random() % 500 + 1;
+   // NSLog(@"%d", nextEnemy);
+    if (2 >= nextEnemy){
+        [self createEnemy];
+    }
     
     [self runBackground:timeSinceLast];
     

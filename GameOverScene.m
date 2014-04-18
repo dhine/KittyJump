@@ -19,7 +19,7 @@
         gameOverTitle.position = CGPointMake(self.size.width/2, self.size.height/2);
         
         SKLabelNode *tryAgainButton = [[SKLabelNode alloc] init];
-        tryAgainButton.text = @"Tap to Try Agian";
+        tryAgainButton.text = @"Tap to Try Again";
         tryAgainButton.position = CGPointMake(self.size.width/2, self.size.height/2 + 40);
         
         [self addChild:gameOverTitle];
@@ -34,8 +34,6 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    
-    
     [self newGame];
     
 }
