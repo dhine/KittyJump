@@ -12,13 +12,15 @@
 #import "carEnemy.h"
 #import "GameOverScene.h"
 
+
 @class Background;
 @interface MyScene : SKScene <SKPhysicsContactDelegate>
 
 @property (strong,nonatomic)Background *currentBackground;
 @property (strong,nonatomic)catPlayer *player;
 @property (assign) CFTimeInterval lastUpdateTimeInterval;
-
-@property  (strong) UIGestureRecognizer * tap;
+@property (assign) BOOL canMakeEnemy;
+@property (strong) UIGestureRecognizer * tap;
+@property (strong) UISwipeGestureRecognizer * swipeDown;
 
 @end

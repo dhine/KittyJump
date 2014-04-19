@@ -18,7 +18,7 @@
         //apply physics body
         self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.height/2];
         self.physicsBody.dynamic=YES;
-        self.physicsBody.restitution = 0;
+        self.physicsBody.restitution = .1;
         self.physicsBody.linearDamping = 0;
         self.physicsBody.friction = 0.5;
         

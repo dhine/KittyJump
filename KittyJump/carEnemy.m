@@ -26,7 +26,7 @@
         
         self.physicsBody.categoryBitMask = enemyCategory;
         self.physicsBody.contactTestBitMask = playerCategory;
-        self.physicsBody.mass = 800;
+        self.physicsBody.mass = 8000;
         
         self.physicsBody.allowsRotation = NO;
 

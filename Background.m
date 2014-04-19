@@ -23,10 +23,8 @@
     
     //make floor of level w/ physics body
     background.physicsBody = [SKPhysicsBody bodyWithEdgeFromPoint:CGPointMake(0, 30) toPoint:CGPointMake(background.size.width, 30)];
-    
     //assign categorybitmask
     background.physicsBody.categoryBitMask = backgroundCategory;
-    
     //set contact bitmask
     background.physicsBody.contactTestBitMask = playerCategory;
     
@@ -39,5 +37,10 @@
     [background addChild:ceilingCollide];
     
     return background;
+}
+-(void)changeLane:(lanePositionState)position {
+    if (position == lanePositionTop){
+    
+    }
 }
 @end

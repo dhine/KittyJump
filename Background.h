@@ -7,9 +7,20 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+typedef enum lanePositionState {
+    lanePositionTop = 0,
+    lanePositionMiddle,
+    lanePositionBottom
+}lanePositionState;
 
 @interface Background : SKSpriteNode
 
 + (Background *)generateNewBackground;
+
+@property SKNode *topLane;
+@property SKNode *middleLane;
+@property SKNode *bottomLane;
+
+-(void)changeLane:(lanePositionState)position;
 
 @end

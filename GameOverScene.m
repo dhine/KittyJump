@@ -20,10 +20,14 @@
         
         SKLabelNode *tryAgainButton = [[SKLabelNode alloc] init];
         tryAgainButton.text = @"Tap to Try Again";
-        tryAgainButton.position = CGPointMake(self.size.width/2, self.size.height/2 + 40);
+        tryAgainButton.position = CGPointMake(self.size.width/2, -200);
+        
+        SKAction *tryAgainPositionMove = [SKAction moveTo:CGPointMake(self.size.width/2, self.size.height/2 - 50) duration: 2.0];
         
         [self addChild:gameOverTitle];
         [self addChild:tryAgainButton];
+        [tryAgainButton runAction:tryAgainPositionMove];
+        
     }
     return self;
 }
