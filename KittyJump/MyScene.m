@@ -27,15 +27,17 @@
     return self;
 }
 
+//run catPlayer jump
 - (void)tappedScreen
 {
     
     [self.player doJump:self.player.playerState];
 }
+//run catPlayer force down
 - (void)swippedDown{
     [self.player doDown:self.player.playerState];
 }
-
+//make bad guys
 - (void)createEnemy
 {
     carEnemy *theBadGuy = [[carEnemy alloc] init];
@@ -43,7 +45,7 @@
     [self addChild:theBadGuy];
     
 }
-
+//add gesture recognizers
 - (void)didMoveToView:(SKView *)view
 {
     //tap to jump tap again to superjump
@@ -54,7 +56,7 @@
     [self.swipeDown setDirection:UISwipeGestureRecognizerDirectionDown];
     [view addGestureRecognizer:self.swipeDown];
 }
-
+//infinite background
 - (void)runBackground:(CFTimeInterval)timeSinceLast {
     //Move background's "X" position by "backgroundmovespeed" each frame
     [self enumerateChildNodesWithName:backgroundName usingBlock:^(SKNode *node, BOOL *stop) {
@@ -73,7 +75,7 @@
         self.currentBackground = temp;
     }
 }
-
+//instructions for bad guys
 - (void)runEnemy:(CFTimeInterval)timeSinceLast {
     [self enumerateChildNodesWithName:redCarEnemy usingBlock:^(SKNode *node, BOOL *stop) {
         node.position = CGPointMake(node.position.x - 10, node.position.y);
@@ -98,7 +100,7 @@
     
     
    // NSLog(@"%d", nextEnemy);
-    if (2 >= nextEnemy){
+    if (5 >= nextEnemy){
         [self createEnemy];
     }
     
@@ -107,13 +109,14 @@
     [self runEnemy:timeSinceLast];
     
 }
+//Game Over
 - (void)endGame {
     [self.view removeGestureRecognizer:self.tap];
     [self.view removeGestureRecognizer:self.swipeDown];
     GameOverScene * gameOver = [GameOverScene sceneWithSize:self.size];
     [self.view presentScene:gameOver transition:[SKTransition doorsCloseHorizontalWithDuration:1.0]];
 }
-
+//Contact detection
 - (void)didBeginContact:(SKPhysicsContact *)contact {
     
     SKPhysicsBody * notThePlayer;

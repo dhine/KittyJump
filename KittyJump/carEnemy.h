@@ -8,7 +8,16 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "Common.h"
+typedef enum enemyCarType {
+    enemyCarPolice = 0,
+    enemyCarBlue,
+    enemyCarRed,
+    enemyCarBrown
+}enemyCarType;
+
 
 @interface carEnemy : SKSpriteNode
+
+@property (assign,nonatomic) enemyCarType carType;
 
 @end
